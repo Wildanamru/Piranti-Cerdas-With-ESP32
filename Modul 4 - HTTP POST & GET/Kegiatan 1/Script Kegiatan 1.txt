@@ -1,0 +1,71 @@
+//Kegiatan1modul4
+
+#include <MPU6050_tockn.h>
+#include <Wire.h>
+
+MPU6050 mpu(Wire);
+const int ldrPin = 15; // Pin analog untuk sensor LDR
+
+int16_t ax, ay, az;
+int16_t gx, gy, gz;
+
+const float threshold = 10.0; // Ambang sudut perubahan
+
+void setup() {
+  Wire.begin();
+  mpu.begin();
+  mpu.calcGyroOffsets(true);
+  Serial.begin(9600);
+}
+
+void loop() {
+  mpu.update();
+  
+  int16_t gxNew = mpu.getGyroX();
+  int16_t gyNew = mpu.getGyroY();
+  int16_t gzNew = mpu.getGyroZ();
+  
+  float angleX = atan2(gxNew, sqrt(gyNew * gyNew + gzNew * gzNew)) * 180 / PI;
+  float angleY = atan2(gyNew, sqrt(gxNew * gxNew + gzNew * gzNew)) * 180 / PI;
+
+  // Baca nilai sensor LDR
+  int ldrValue = analogRead(ldrPin);
+
+  // Tampilkan hasil pembacaan LDR di Serial Monitor
+  Serial.print("Nilai LDR: ");
+  Serial.println(ldrValue);
+
+  // Analisis kondisi cahaya berdasarkan pembacaan LDR
+  if (ldrValue >= 0 && ldrValue <= 50) {
+    Serial.println("Keadaan gelap");
+  } else if (ldrValue > 50 && ldrValue <= 500) {
+    Serial.println("Keadaan redup");
+  } else if (ldrValue > 500 && ldrValue <= 2000) {
+    Serial.println("Cahaya terang");
+  } else {
+    Serial.println("Sangat terang");
+  }
+
+  if (abs(angleX) > threshold) {
+    if (angleX > 0) {
+      // Sudut ke kanan; // Bunyi dengan frekuensi 1000 Hz
+      Serial.println("Sudut ke kanan");
+    } else {
+      // Sudut ke kiri // Bunyi dengan frekuensi 500 Hz
+      Serial.println("Sudut ke kiri");
+    }
+  } else if (abs(angleY) > threshold) {
+    if (angleY > 0) {
+      // Sudut ke belakang // Bunyi dengan frekuensi 800 Hz
+      Serial.println("Sudut ke belakang");
+    } else {
+      // Sudut ke depan// Bunyi dengan frekuensi 300 Hz
+      Serial.println("Sudut ke depan");
+    }
+  } else {
+    Serial.println("Sudut normal");
+    // Matikan bunyi jika tidak ada perubahan sudut
+  }
+
+  delay(1000);
+}

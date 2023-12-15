@@ -1,0 +1,11 @@
+1. Buatlah Folder file xampp/htdocs/pirantimodul4/mpu.php dan isikan Script mpu.php yang sudah disediakan
+
+2. Copaskan Script Kegiatan 2 kedalam arduino ide
+
+3. Install Xampp dan nyalakan Apache & servernya
+
+4. Buatlah database dengan nama database "mpu6050", nama tablenya "mpu" dan nama kolomnya id_sensor_gerak (mandatory auto increment) angka_sumbu dan kemiringan semuanya INT
+
+
+========= CATATATN ==========
+1. untuk mendapatkan ipv4 buka cmd kemudian ketikan ipconfig copas ipv4nya

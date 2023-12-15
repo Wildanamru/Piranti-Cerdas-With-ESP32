@@ -1,0 +1,4 @@
+1. Install dulu geys xamppnya
+2. buat database dan table, tinggal import aja tuh file SQL mpu6050nya 
+3. folder interfacekeamanan dan pirdasmodul6 dicopas ke file xampp/htdocs
+4. copas dan jalankan Scriptnya aja udah

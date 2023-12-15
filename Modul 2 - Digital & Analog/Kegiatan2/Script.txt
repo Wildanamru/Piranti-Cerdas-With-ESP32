@@ -1,0 +1,26 @@
+#include <Arduino.h>
+
+const int ldrPin = 35;
+const int buzzerPin = 33;  // Hubungkan buzzer ke pin 7
+
+void setup() {
+  pinMode(ldrPin, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int lightValue = analogRead(ldrPin);
+
+  if (lightValue < 500) {
+    // Cahaya gelap
+    digitalWrite(buzzerPin, LOW); // Hidupkan buzzer
+    Serial.println("Terang");
+  } else {
+    // Cahaya terang
+    digitalWrite(buzzerPin, HIGH); // Matikan buzzer
+    Serial.println("Gelap");
+  }
+
+  delay(1000); // Tambahkan penundaan untuk membaca data dengan interval 1 detik
+}

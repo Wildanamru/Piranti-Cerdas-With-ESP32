@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px;
+            background-color: orange;
+        }
+
+        #statusContainer {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Keamanan Jendela Sensor Status</h1>
+
+    <!-- Tombol Refresh -->
+    <button>
+        <div id="statusValue">Loading...</div>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="status_update.js"></script>
+
+</body>
+</html>
