@@ -7,7 +7,7 @@
 
 - Modul 1 : Belajar pengenalan Mikrokontroler input & output
 
-- Modul 2 : Belajar Input & Output Analog & Digital
+- Modul 2 : Belajar Input & Output Analog & Digital dengan ldr modul/sensor & buzzer
 
 - Modul 3 : Belajar mengkoneksikan ESP32 dengan Wifi dan menggunakan MPU6050 (sensor gerak)
 
